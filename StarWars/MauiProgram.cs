@@ -16,11 +16,19 @@ namespace StarWars
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddSingleton<IStarWarsService,StarWarsService>();
+            /// <summary>
+            /// Registra el servicio Star Wars y la página principal en el contenedor de inyección de dependencia.
+            /// </summary>
+            builder.Services.AddSingleton<IStarWarsService, StarWarsService>();
+
+            /// <summary>
+            /// Registra la página principal con duración de vida transitoria en el contenedor de inyección de dependencia.
+            /// </summary>
             builder.Services.AddTransient<MainPage>();
 
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
